@@ -12,13 +12,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RenameField(
-            model_name='javi',
-            old_name='skillFourth',
-            new_name='skillForth',
-        ),
-        migrations.AlterField(
-            model_name='javi',
-            name='age',
-            field=models.IntegerField(),
+            model_name='skill',
+            old_name='skillPerson',
+            new_name='skill',
         ),
     ]

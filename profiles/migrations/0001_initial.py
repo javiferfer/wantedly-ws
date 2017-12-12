@@ -11,17 +11,20 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Javi',
+            name='Person',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=25)),
+                ('name', models.CharField(max_length=250)),
                 ('age', models.CharField(max_length=250)),
-                ('sex', models.CharField(max_length=10)),
-                ('photo', models.CharField(max_length=1000)),
-                ('skillFirst', models.CharField(max_length=250)),
-                ('skillSecond', models.CharField(max_length=250)),
-                ('skillThird', models.CharField(max_length=250)),
-                ('skillFourth', models.CharField(max_length=250)),
+                ('sex', models.CharField(max_length=250)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Skill',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('skillPerson', models.CharField(max_length=250)),
+                ('person', models.ForeignKey(to='profiles.Person')),
             ],
         ),
     ]
