@@ -7,7 +7,9 @@ Build a web app where a user can list his/her skills in a profile page and recom
 ## Characteristics of the project
 
 
+## url so as to log in
 
+http://127.0.0.1:8000/profiles/register_user/
 
 
 ## Steps for importing the data

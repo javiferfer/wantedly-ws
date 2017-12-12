@@ -1,0 +1,66 @@
+{% extends "webUser/base.html" %}
+{% load staticfiles %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
+
+{% endblock extra_css %}
+
+{% block extra_js %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="{% static "js/jquery.min.js" %}"></script> -->
+
+<script type="text/javascript">
+
+    var myRefresh;
+    function refresh() {
+        var refresca = '{{request.session.refresca}}';
+        console.log(refresca);
+        if (refresca == 'True'){
+            $.ajax({
+                url: '/webUser/status_board/', // this should grab only #table element...
+                success: function (data) {
+                    // ...and it will insert it inside #result element
+                    $('#board').html(data);
+                    myRefresh = setTimeout(refresh, 2000);
+                }
+            })
+        }
+    }
+     function show(){
+        $.ajax({
+            url: '/webUser/status_board/', // this should grab only #table element...
+            success: function (data) {
+                // ...and it will insert it inside #result element
+                $('#board').html(data);
+            }
+        })
+    }
+
+</script>
+{% endblock extra_js %}
+
+
+{% block content %}
+<div>
+
+    {% if user.is_authenticated %}
+    <script type="text/javascript">
+        show();
+        var isMyTurn = '{{myTurn}}';
+        console.log(isMyTurn);
+        if (isMyTurn == "False"){
+            refresh();
+        }
+    </script>
+
+    <div id="board">
+        Board goes here
+    </div>
+    {% else %}
+        <h3>Haz login o registrate para jugar</h3>
+    {% endif %}
+
+</div>
+{% endblock content %}

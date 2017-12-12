@@ -1,0 +1,33 @@
+{% load staticfiles %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
+
+{% endblock extra_css %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RatonGato</title>
+    </head>
+
+    <body>
+        <h1>Register User</h1>
+
+        {% if registered %}
+        <strong>Thank you for registering!</strong>
+        <a href="/profiles/">Return to the homepage.</a><br />
+        {% else %}
+        <strong>Register here!</strong><br />
+
+        <form id="user_form" method="post" action="/profiles/register_user/">
+
+            {% csrf_token %}
+            {{ user_form.as_p }}
+
+            <!-- Provide a button to click to submit the form. -->
+            <input type="submit" name="submit" value="Register" />
+        </form>
+        <a href="/profiles/index">Index</a>
+        {% endif %}
+    </body>
+</html>
