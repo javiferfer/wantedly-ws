@@ -6,3 +6,14 @@ Build a web app where a user can list his/her skills in a profile page and recom
 
 ## Characteristics of the project
 
+
+
+
+
+## Steps for importing the data
+
+from profiles.models import Javi
+
+javi = Javi(name="Javier", age=23, sex="Male", photo="https://www.shareicon.net/data/2016/09/01/822711_user_512x512.png", skillFirst="c++", skillSecond="leadership", skillThird="Communication", skillForth="English")
+
+javi.save()
