@@ -1,45 +1,29 @@
 {% load staticfiles %}
 {% block extra_css %}
-      <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
-
-    {% endblock extra_css %}
+    <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
+{% endblock extra_css %}
 
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
-        <title>RatonGato</title>
+        <title>Wantedly Coding Challenge</title>
     </head>
-
     <body>
         <h1>Login User</h1>
             {% if user.is_authenticated %}
-                {% if quesoy == "gato" %}
                 <script type="text/javascript">
-                    window.location.href = "{% url 'create_game' %}"
+                    window.location.href = "{% url 'index' %}"
                 </script>
-                {%elif quesoy == "raton" %}
-                     <script type="text/javascript">
-                            window.location.href = "{% url 'join_game' %}"
-                     </script>
-                {% else %}
-                     <script type="text/javascript">
-                       window.location.href = "{% url 'index' %}"
-                    </script>
-                {%endif%}
-
             {% else %}
-
-            <form id="login_form" method="post" action="/profiles/login_user/">
-                {% csrf_token %}
-                Username: <input type="text" name="username" value="" size="50" />
-                <br />
-                Password: <input type="password" name="password" value="" size="50" />
-                <br />
-                <input type="submit" value="submit" />
-            </form>
+                <form id="login_form" method="post" action="/profiles/login_user/">
+                    {% csrf_token %}
+                    Username: <input type="text" name="username" value="" size="50" />
+                    <br />
+                    Password: <input type="password" name="password" value="" size="50" />
+                    <br />
+                    <input type="submit" value="submit" />
+                </form>
             {% endif %}
-        <a href="/profiles/index">Volver al Index</a>
-
+        <a href="/profiles/index">Come back to the Index</a>
     </body>
 </html>

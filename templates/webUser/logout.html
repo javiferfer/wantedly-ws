@@ -1,20 +1,16 @@
 {% load staticfiles %}
 {% block extra_css %}
-      <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
-
-    {% endblock extra_css %}
+	<link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
+{% endblock extra_css %}
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>RatonGato</title>
-    </head>
-
-    <body>
-        <h1>Logout</h1>
-
-        <strong>Dear {{username}} you have been logged out</strong><br />
-        <a href="/profiles/index">Index</a>
-
-    </body>
+	<head>
+		<title>Wantedly Coding Challenge</title>
+	</head>
+	<body>
+		<h1>Logout</h1>
+		<strong>Dear {{username}} you have been logged out</strong><br />
+		<a href="/profiles/index">Index</a>
+	</body>
 </html>

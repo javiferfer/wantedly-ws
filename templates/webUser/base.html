@@ -1,64 +1,42 @@
 {% load staticfiles %}
-
 <html>
-<head>
-
-    <!-- Some stuff here which should be included in all templates for example js or css -->
-    {% load staticfiles %}
-    {% block extra_css %}
-      <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
-
-    {% endblock extra_css %}
-
-    {% block extra_js %}
-    <!-- to included app-template dependent js -->
-    {% endblock extra_js %}
-
-    {% block extra_head %}
-    <!-- for anything else inside head -->
-    {% endblock extra_head %}
-    <title>{% block title %}Rat&oacute;n y gato{% endblock %}</title>
-
-</head>
-
-<body>
-
-<!-- an icon and application name goes here -->
-<div id="title">
-    {% block atitle %}
-    <H1>Aplicaci&oacute;n Raton y Gato,</H1>
-    {% endblock atitle %}
-</div>
-<div id="header">
-    {% block menu %}
-    {% if not user.is_authenticated %}
-    <a href="/profiles/login_user/">Login </a>
-    <a href="/profiles/register_user/">- Register</a>
-    {% endif %}
-    {% if user.is_authenticated%}
-        <br />
-        Bienvenido: {{ username }}
-        <a href="{% url 'logout_user' %}"> - Logout - </a>
-    {% endif %}
-    {% endblock menu %}
-</div>
-
-<hr/>
-
-{% block content %}
-<div id="content">
-    This is good
-</div>
-{% endblock content %}
-
-<hr/>
-
-{% block footer %}
-<div id="footer">
-    copyrigth 2015 by ...
-    <a href="/webUser/about">About</a>
-</div>
-{% endblock footer %}
-
-</body>
+    <head>
+        {% load staticfiles %}
+        {% block extra_css %}
+            <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
+        {% endblock extra_css %}
+        <title>{% block title %}Wantedly Coding Challenge{% endblock %}</title>
+    </head>
+    <body>
+        <div id="title">
+            {% block atitle %}
+                <h1>Wantedly Coding Challenge</h1>
+            {% endblock atitle %}
+        </div>
+        <div id="header">
+            {% block menu %}
+                {% if not user.is_authenticated %}
+                    <a href="/profiles/login_user/">Login </a>
+                    <a href="/profiles/register_user/">- Register</a>
+                {% endif %}
+                {% if user.is_authenticated%}
+                    <br />
+                    Welcome: {{ username }}
+                    <a href="{% url 'logout_user' %}"> - Logout - </a>
+                {% endif %}
+            {% endblock menu %}
+        </div>
+        <hr/>
+        {% block content %}
+            <div id="content">
+                This is good
+            </div>
+        {% endblock content %}
+        <hr/>
+        {% block footer %}
+            <div id="footer">
+                Web developed by Javier Fernandez
+            </div>
+        {% endblock footer %}
+    </body>
 </html>

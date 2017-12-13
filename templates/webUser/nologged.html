@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 {% load staticfiles %}
     {% block extra_css %}
-      <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
-
+        <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
     {% endblock extra_css %}
-{% load staticfiles %} <!-- New line -->
+    
+{% load staticfiles %}
 <html>
-  <head>
-    <title>You are not logged</title>
-  </head>
-  <body>
-    Please logging <a href="/profiles/login_user/">here</a><br />
+    <head>
+        <title>You are not logged</title>
+    </head>
+    <body>
+        Please logging <a href="/profiles/login_user/">here</a><br />
         <a href="/profiles/index">Index</a>
-  </body>
+    </body>
 </html>
