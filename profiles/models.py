@@ -15,6 +15,7 @@ class Skill(models.Model):
 
 	skill = models.CharField(max_length=250)
 	person = models.ForeignKey(Person)
+	category =  models.CharField(max_length=250)
 
 	def __str__(self):
 		return self.skill
