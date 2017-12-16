@@ -12,7 +12,7 @@
         <h1>Login User</h1>
             {% if user.is_authenticated %}
                 <script type="text/javascript">
-                    window.location.href = "{% url 'index' %}"
+                    window.location.href = "{% url 'main_page' %}"
                 </script>
             {% else %}
                 <form id="login_form" method="post" action="/profiles/login_user/">

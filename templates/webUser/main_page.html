@@ -1,0 +1,53 @@
+{% extends "webUser/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div id="board">
+        <h4>General information:</h4> 
+        Username: {{ user.username }}
+        <br />
+
+        Email: {{ person.email }}
+        <br />
+
+        {% if person.name %}
+            Name: {{ person.name }}
+        {% else %}
+            <form id="name_form" method="post" action="/profiles/main_page/">
+                {% csrf_token %}                    
+                Insert your name: <input type="name" name="name" value="" size="50" />
+                <br />
+                <input type="submit" value="submit" />
+            </form>
+        {% endif %}
+        <br/>
+
+        {% if person.age %}
+            Age: {{ person.age }}
+        {% else %}
+            <form id="age_form" method="post" action="/profiles/main_page/">
+                {% csrf_token %}
+                Insert your age: <input type="age" name="age" value="" size="50" />
+                <br />
+                <input type="submit" value="submit" />
+            </form>
+        {% endif %}
+        <br/>
+
+        <h4>Skills:</h4>
+
+        <form id="skill_form" method="post" action="/profiles/main_page/">
+            {% csrf_token %}                    
+            Insert a new skill: <input type="name" name="name" value="" size="50" />
+            <br />
+            <input type="submit" value="submit" />
+        </form>
+
+        {% for skill in skill_array %}
+            {{ skill.person }}
+                <p style = "text-indent : 5em;"> {{ skill.skill }} </p>
+            <br/>
+        {% endfor %}
+
+    </div>
+{% endblock content %}
