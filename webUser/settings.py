@@ -13,8 +13,9 @@ SECRET_KEY = 'j(rr923rb70z332l0kwo6pdh1qzlcu((vzrkzpi-@q#c@wr7(b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'wantedlycodechallenge.herokuapp.com/',
+]
 
 # Application definition
 

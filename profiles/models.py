@@ -14,6 +14,7 @@ class Skill(models.Model):
 
 	person = models.ForeignKey(Person)
 	skill = models.CharField(max_length=250)
+	number_of_likes =  models.IntegerField(default=0)
 
 	def __str__(self):
 		return self.skill
