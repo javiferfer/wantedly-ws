@@ -14,7 +14,13 @@
             	<h4>{{ personList.username }}</h4>
     			{% for skill in skill_objects %}
 		            {% if skill.person == personList.username %}
-		                {{ skill.skill }}<br \>
+		                {{ skill.skill }} -> {{ skill.number_of_likes }}
+                        <form id="likes_form" method="post" action="/profiles/users_page/">
+                            {% csrf_token %}
+                            <!-- I like it: <input type="checkbox" name="checkbox" value="{{ skill.skill }}" {% if flag == 1 %} checked {% elif flag == 0 %} unchecked {% endif %} /> -->
+                            I like it: <input type="checkbox" name="checkbox" value="{{ skill.skill }}"/>
+                            <input type="submit" value="submit" />
+                        </form>
 		            {% endif %}
     			{% endfor %}
             {% endif %}

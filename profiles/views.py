@@ -30,11 +30,11 @@ def profile_page(request):
         if person.username == current_user:
             user = person
 
-    if person.name is None:
-        person.name = request.POST.get('name')
-    if person.age is None:
-        person.age = request.POST.get('age')
-    person.save()
+    if request.POST:
+        if request.POST.get('name') and request.POST.get('age'):
+            person.name = request.POST.get('name')
+            person.age = request.POST.get('age')
+            person.save()
 
     skill_objects = Skill.objects.all()
 
@@ -59,29 +59,24 @@ def users_page(request):
 
     skill_objects = Skill.objects.all()
 
+    skillChecked = None
+    # This flag is developed for future work
+    # flag = 0
+
+    if request.POST.get('checkbox'):
+        # if flag == 0:
+        #     flag = 1
+        # else:
+        #     flag = 0
+
+        skillChecked = request.POST.get('checkbox')
+
+        for skill in skill_objects:
+            if skill.skill == skillChecked:
+                skill.number_of_likes = skill.number_of_likes + 1
+                skill.save()
     return render(request,'webUser/users.html', {'person': user, 'people': people, 'skill_objects': skill_objects})
-
-
-    # skills = Skill.objects.all()
-    # i = 0
-    # my_array = "No skills"
-    # for s in skills:
-    #     # if s.person == current_user:
-    #     skillName = s.person
-    #     if s.person == current_user:
-    #         probar = 5
-    #         my_array = s.skill
-    #         i += 1
-    #     else:
-    #         probar = 0
-
-    # for s in skills:
-    #     if s.skill == "Japanese":
-    #         skill = s
-    #     else:
-    #         skill = None
-
-    # return render(request,'webUser/main_page.html',{'person': persona, 'skill_array' : my_array, 'probar' : probar, 'skill' : skillName})
+    # return render(request,'webUser/users.html', {'person': user, 'people': people, 'skill_objects': skill_objects, 'flag' : flag})
 
 
 def method1_object_property(request):

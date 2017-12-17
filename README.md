@@ -29,3 +29,8 @@ https://github.com/codingforentrepreneurs/try-django-19
 ## Link webs
 
 https://wantedlycodechallenge.herokuapp.com/
+
+
+## Interesting web links
+
+https://www.webforefront.com/django/formfieldtypesandvalidation.html
