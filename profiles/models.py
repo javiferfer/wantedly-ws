@@ -12,7 +12,8 @@ class Person(models.Model):
 
 class Skill(models.Model):
 
-	person = models.ForeignKey(Person)
+	# person = models.ForeignKey(Person)
+	person = models.CharField(max_length=250)
 	skill = models.CharField(max_length=250)
 	number_of_likes =  models.IntegerField(default=0)
 

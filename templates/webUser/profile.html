@@ -12,21 +12,13 @@
 
         {% if person.name %}
             Name: {{ person.name }}
+            <br />
+            Age: {{ person.age }}
         {% else %}
-            <form id="name_form" method="post" action="/profiles/main_page/">
+            <form id="name_form" method="post" action="/profiles/profile_page/">
                 {% csrf_token %}                    
                 Insert your name: <input type="name" name="name" value="" size="50" />
                 <br />
-                <input type="submit" value="submit" />
-            </form>
-        {% endif %}
-        <br/>
-
-        {% if person.age %}
-            Age: {{ person.age }}
-        {% else %}
-            <form id="age_form" method="post" action="/profiles/main_page/">
-                {% csrf_token %}
                 Insert your age: <input type="age" name="age" value="" size="50" />
                 <br />
                 <input type="submit" value="submit" />
@@ -34,22 +26,26 @@
         {% endif %}
         <br/>
 
-        <h4>Skills:</h4>
+        <br />
+        <h4>My skills:</h4> 
+        {% for skill in skill_objects %}
+            {% if skill.person == user.username %}
+                {{ skill.skill }}<br \><br \>
+            {% endif %}
+        {% endfor %}
 
-        <form id="skill_form" method="post" action="/profiles/main_page/">
+        <form id="skill_form" method="post" action="/profiles/profile_page/">
             {% csrf_token %}                    
-            Insert a new skill: <input type="name" name="name" value="" size="50" />
+            Insert your new skill: <input type="skill" name="skill" value="" size="50" />
             <br />
             <input type="submit" value="submit" />
         </form>
 
-        {% for skill in skill_array %}
-            {{ skill.person }}
-                <p style = "text-indent : 5em;"> {{ skill.skill }} </p>
-            <br/>
-            <br/>
-            <br/>
-        {% endfor %}
+        <br /><br />
+        Go to <a href="{% url 'main_page' %}"> - Main Page - </a>
+        <br /><br />
+        Go to <a href="{% url 'users_page' %}"> - Users Page - </a>
+        <br /><br />
 
     </div>
 {% endblock content %}

@@ -17,23 +17,50 @@ def index(request):
 def main_page(request):
     context_dict = {'boldmessage': "Wantedly Coding Challenge"}
 
+    return render(request,'webUser/main.html')
+
+
+def profile_page(request):
+    context_dict = {'boldmessage': "Wantedly Coding Challenge"}
+
     current_user = request.user.username
 
-    try:
-       user = Person.objects.get(username="Prueba")
-    except Person.DoesNotExist:
-       user = None
+    people = Person.objects.all()
+    for person in people:
+        if person.username == current_user:
+            user = person
+
+    if person.name is None:
+        person.name = request.POST.get('name')
+    if person.age is None:
+        person.age = request.POST.get('age')
+    person.save()
+
+    skill_objects = Skill.objects.all()
+
+    if request.POST.get('skill'):
+        newSkill = Skill()
+        newSkill.person = current_user
+        newSkill.skill = request.POST.get('skill')
+        newSkill.save()
+
+    return render(request,'webUser/profile.html',{'person': user, 'skill_objects': skill_objects})
+
+
+def users_page(request):
+    context_dict = {'boldmessage': "Wantedly Coding Challenge"}
+
+    current_user = request.user.username
 
     people = Person.objects.all()
-    for p in people:
-        if p.username == current_user:
-            persona = p
-        else:
-            persona = None
+    for person in people:
+        if person.username == current_user:
+            user = person
 
-    skills = Skill.objects.all()
+    skill_objects = Skill.objects.all()
 
-    return render(request,'webUser/main_page.html',{'person': persona, 'skill_array' : skills})
+    return render(request,'webUser/users.html', {'person': user, 'people': people, 'skill_objects': skill_objects})
+
 
     # skills = Skill.objects.all()
     # i = 0

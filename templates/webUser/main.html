@@ -1,0 +1,14 @@
+{% extends "webUser/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div id="board">
+
+        <br />
+        Go to <a href="{% url 'profile_page' %}"> - Profile Page - </a>
+        <br /><br />
+        Go to <a href="{% url 'users_page' %}"> - Users Page - </a>
+        <br /><br />
+
+    </div>
+{% endblock content %}
