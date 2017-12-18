@@ -106,3 +106,5 @@ Heroku is a cloud platform as a service (PaaS) supporting several programming la
 In the next link, it is possible to find this project on such platform.
 
 https://wantedlycodechallenge.herokuapp.com/
+
+All the commands mentioned above can be launched in the same way by changing *'127.0.0.1:8000'* for *'wantedlycodechallenge.herokuapp.com'*.
