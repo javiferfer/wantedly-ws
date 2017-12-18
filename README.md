@@ -35,8 +35,8 @@ Throughout the next sections, the necessary steps in order to launch the program
 - If we update the file models.py, before running the upper command, we have to:
 
 <pre><code>
-	python manage.py makemigrations
-	python manage.py migrate
+python manage.py makemigrations
+python manage.py migrate
 </code></pre>
 
 #### First steps
@@ -60,8 +60,8 @@ Once we have logged in the program, there are three main windows:
 To see all this web pages without the necessity of creating a new user, you can login with:
 
 <pre>
-	Username: test
-	Password: admindb
+Username: test
+Password: admindb
 </pre>
 
 #### Access as an admin
@@ -73,14 +73,14 @@ http://127.0.0.1:8000/admin
 The username and password of the current root is:
 
 <pre>
-	Username: admin
-	Password: wantedly
+Username: admin
+Password: wantedly
 </pre>
 
 In order to create a new superuser throughout the terminal, this command has to be launched:
 
 <pre><code>
-	python manage.py createsuperuser
+python manage.py createsuperuser
 </code></pre>
 
 ### Aims achieved
