@@ -1,7 +1,4 @@
 {% load staticfiles %}
-{% block extra_css %}
-	<link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
-{% endblock extra_css %}
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +7,8 @@
 	</head>
 	<body>
 		<h1>Logout</h1>
-		<strong>Dear {{username}} you have been logged out</strong><br />
+		Dear {{username}} you have been logged out<br />
+		<br />
 		<a href="/profiles/index">Index</a>
 	</body>
 </html>

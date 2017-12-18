@@ -3,7 +3,6 @@
 
 {% block content %}
     <div id="board">
-        
         In this section, the users and their respective skills are mentioned. 
         <br \> 
         Press like if you like their skills.
@@ -25,13 +24,10 @@
     			{% endfor %}
             {% endif %}
         {% endfor %}
-
-        <br />
-        <br />
+        <br /><br />
         Go to <a href="{% url 'main_page' %}"> - Main Page - </a>
         <br /><br />
         Go to <a href="{% url 'profile_page' %}"> - Profile Page - </a>
         <br /><br />
-
     </div>
 {% endblock content %}

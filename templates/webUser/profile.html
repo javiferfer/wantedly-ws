@@ -30,7 +30,7 @@
         <h4>My skills:</h4>
         {% for skill in skill_objects %}
             {% if skill.person == user.username %}
-                {{ skill.skill }}<br \><br \>
+                {{ skill.skill }} {{ skill.number_of_likes }}<br \><br \>
             {% endif %}
         {% endfor %}
 
@@ -46,6 +46,5 @@
         <br /><br />
         Go to <a href="{% url 'users_page' %}"> - Users Page - </a>
         <br /><br />
-
     </div>
 {% endblock content %}

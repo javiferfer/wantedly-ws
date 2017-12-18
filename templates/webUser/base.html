@@ -1,10 +1,7 @@
 {% load staticfiles %}
 <html>
     <head>
-        {% load staticfiles %}
-        {% block extra_css %}
-            <link rel="stylesheet" href="{% static "css/mycss.css" %}" type="text/css"  />
-        {% endblock extra_css %}
+        <img src="https://pbs.twimg.com/profile_images/476278600509825024/i3T9-YWq.jpeg" width=50% height=10%>
         <title>{% block title %}Wantedly Coding Challenge{% endblock %}</title>
     </head>
     <body>
@@ -27,15 +24,14 @@
             {% endblock menu %}
         </div>
         <hr/>
-        {% block content %}
-            <div id="content">
-                This is good
-            </div>
-        {% endblock content %}
+            {% block content %}
+            {% endblock content %}
         <hr/>
         {% block footer %}
             <div id="footer">
                 Web developed by Javier Fernandez
+                <br /><br />
+                <img src="https://pbs.twimg.com/profile_images/476278600509825024/i3T9-YWq.jpeg" width=50% height=10%>
             </div>
         {% endblock footer %}
     </body>

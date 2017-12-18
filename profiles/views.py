@@ -7,19 +7,19 @@ from profiles.forms import UserForm
 from profiles.models import Person, Skill
 from array import *
 
-
+# Index and default web interface.
 def index(request):
     context_dict = {'boldmessage': "Wantedly Coding Challenge"}
     if(request.user.is_authenticated):context_dict['username'] = request.user.username
     return render(request, 'webUser/index.html', context=context_dict)
 
-
+# Main web page when you are logged in.
 def main_page(request):
     context_dict = {'boldmessage': "Wantedly Coding Challenge"}
 
     return render(request,'webUser/main.html')
 
-
+# Web page that shows your profile.
 def profile_page(request):
     context_dict = {'boldmessage': "Wantedly Coding Challenge"}
 
@@ -46,7 +46,7 @@ def profile_page(request):
 
     return render(request,'webUser/profile.html',{'person': user, 'skill_objects': skill_objects})
 
-
+# Web page that shows the skills of the users.
 def users_page(request):
     context_dict = {'boldmessage': "Wantedly Coding Challenge"}
 
@@ -58,17 +58,9 @@ def users_page(request):
             user = person
 
     skill_objects = Skill.objects.all()
-
     skillChecked = None
-    # This flag is developed for future work
-    # flag = 0
 
     if request.POST.get('checkbox'):
-        # if flag == 0:
-        #     flag = 1
-        # else:
-        #     flag = 0
-
         skillChecked = request.POST.get('checkbox')
 
         for skill in skill_objects:
@@ -76,17 +68,8 @@ def users_page(request):
                 skill.number_of_likes = skill.number_of_likes + 1
                 skill.save()
     return render(request,'webUser/users.html', {'person': user, 'people': people, 'skill_objects': skill_objects})
-    # return render(request,'webUser/users.html', {'person': user, 'people': people, 'skill_objects': skill_objects, 'flag' : flag})
 
-
-def method1_object_property(request):
-    people = Person.objects.all()
-    for p in people:
-        p.age = p.getAge()
-    return render_to_response('template.htm', {'people': people})
-
-
-# Register the user
+# Register the user.
 def register_user(request):
     context_dict = {}
     registered = False
@@ -105,8 +88,6 @@ def register_user(request):
             user.save()
             registered = True
             context_dict = {'boldmessage' : "User createlly correctly"}
-
-
         else:
             print user_form.errors
     else:
@@ -114,16 +95,13 @@ def register_user(request):
     return render(request, 'webUser/register.html', {'user_form' : user_form, 'registered' : registered})
 
 
-# Logout the user
+# Logout the user.
 def logout_user(request):
-    if not request.user.is_authenticated():
-        return render(request, 'webUser/nologged.html')
-    else :
-        username = request.session["uname"]
-        logout(request)
-        return render(request, 'webUser/logout.html', {'username' : username})
+    username = request.session["uname"]
+    logout(request)
+    return render(request, 'webUser/logout.html', {'username' : username})
 
-
+# Login the user.
 def login_user(request):
 
     if request.method == 'POST':
@@ -138,9 +116,7 @@ def login_user(request):
                 login(request, user)
                 request.session["uid"] = user.id
                 request.session["uname"] = user.username
-                return render(request, 'webUser/login.html',
-                              {'user.username': user.username, 'user.id' : user.id})
-
+                return render(request, 'webUser/login.html', {'user.username': user.username, 'user.id' : user.id})
             else:
                 return HttpResponse ("The user {0} is not active or it does not exist.". format(username))
         else:
